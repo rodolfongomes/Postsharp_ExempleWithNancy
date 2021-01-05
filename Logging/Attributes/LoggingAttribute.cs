@@ -4,6 +4,7 @@ using System.Text;
 using PostSharp.Aspects;
 using PostSharp.Serialization;
 using Serilog;
+using Serilog.Context;
 using Serilog.Events;
 
 namespace Logging.Attributes
@@ -23,21 +24,28 @@ namespace Logging.Attributes
         public override void OnEntry(MethodExecutionArgs args)
         {
             ConfigureLog();
-            Log.Logger.Information("Entering ...");
+            Log.Information("Entering ...");
+            Log.CloseAndFlush();
         }
         public override void OnException(MethodExecutionArgs args)
         {
-            Log.Logger.Error(args.Exception.Message);
+            ConfigureLog();
+            Log.Error(args.Exception.Message);
+            Log.CloseAndFlush();
         }
 
         public override void OnSuccess(MethodExecutionArgs args)
         {
-            Log.Logger.Information("successfully completed");
+            ConfigureLog();
+            Log.Information("successfully completed");
+            Log.CloseAndFlush();
         }
 
         public override void OnExit(MethodExecutionArgs args)
         {
-            Log.Logger.Information("successfully exited");
+            ConfigureLog();
+            Log.Information("successfully exited");
+            Log.CloseAndFlush();
         }
     }
 }
