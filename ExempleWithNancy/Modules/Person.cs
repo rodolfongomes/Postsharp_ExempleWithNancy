@@ -20,7 +20,7 @@ namespace ExempleWithNancy.Modules
             {
                 var ret = repository.GetAll();
 
-                return repository.GetAll();
+                return ret;
             });
 
             Get("/person/{id}", args =>
