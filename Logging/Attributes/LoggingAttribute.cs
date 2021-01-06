@@ -24,8 +24,9 @@ namespace Logging.Attributes
         public override void OnEntry(MethodExecutionArgs args)
         {
             ConfigureLog();
-            Log.Information("Entering ...");
+            Log.Information(string.Format("Entering on method {0}.{1}...", args.Method.DeclaringType.Name, args.Method.Name));
             Log.CloseAndFlush();
+            args.FlowBehavior = FlowBehavior.Continue;
         }
         public override void OnException(MethodExecutionArgs args)
         {
@@ -37,14 +38,14 @@ namespace Logging.Attributes
         public override void OnSuccess(MethodExecutionArgs args)
         {
             ConfigureLog();
-            Log.Information("successfully completed");
+            Log.Information(string.Format("successfully completed method {0}.{1}", args.Method.DeclaringType.Name, args.Method.Name));
             Log.CloseAndFlush();
         }
 
         public override void OnExit(MethodExecutionArgs args)
         {
             ConfigureLog();
-            Log.Information("successfully exited");
+            Log.Information(string.Format("successfully exited method {0}.{1}", args.Method.DeclaringType.Name, args.Method.Name));
             Log.CloseAndFlush();
         }
     }

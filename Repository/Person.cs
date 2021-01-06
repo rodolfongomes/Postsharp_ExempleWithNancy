@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Schema;
 using Logging.Attributes;
 
-//[assembly: Logging(AttributePriority = 0)]
+[assembly: Logging(AttributePriority = 0)]
 
 namespace Repository
 {
@@ -18,7 +18,6 @@ namespace Repository
             return people.Values.ToList();
         }
 
-        [Logging]
         public Model.Person Get(int id)
         {
             return people.GetValueOrDefault(id);
