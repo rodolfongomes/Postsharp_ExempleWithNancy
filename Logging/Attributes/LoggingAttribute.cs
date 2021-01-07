@@ -18,6 +18,7 @@ namespace Logging.Attributes
             .MinimumLevel.Verbose()
             .WriteTo.File(string.Format("LOG/loggger{0}.log", DateTime.Now.ToString("yyyy-MM-dd")), restrictedToMinimumLevel: LogEventLevel.Debug)
             .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Debug)
+            .WriteTo.MongoDB("mongodb://root:example@mongo:27017/Serilog", collectionName: "LogAPIExempleWithNancy")
             .CreateLogger();
         }
 
