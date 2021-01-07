@@ -5,6 +5,11 @@
 
 To know more about how to setup your enviroment visit the [Microsoft .NET Download Guide](https://www.microsoft.com/net/download)
 
+- Open Powershell
+- Go to repository folder ***(cd %REPO_FOLDER%)***
+- RUN **docker-compose up -d** 
+- Oper browser search localhost:5000
+
 ## Technologies implemented:
 - ASP.NET Core 3.1 (with .NET 3.1)
  - ASP.NET WebApi Core
@@ -14,6 +19,8 @@ To know more about how to setup your enviroment visit the [Microsoft .NET Downlo
 - Serilog
 - NancyFx
 - Postsharp
+- Docker
 
 ## Disclaimer:
 - **NOT** intended to be a definitive solution
+
